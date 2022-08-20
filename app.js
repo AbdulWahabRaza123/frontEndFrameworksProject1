@@ -22,7 +22,7 @@ app.get("/api/:date",(req,res)=>{
         inputDate = new Date(parseInt(req.params.date));
       }
       if(inputDate.toString() == "Invalid Date"){
-        res.json({error:"invalid Date"});
+        res.json({ error : "Invalid Date" });
       }
       else{
     inputDate={
