@@ -5,7 +5,7 @@ const port=process.env.PORT||8000;
 const staticPath=path.join(__dirname,'./public');
 app.use(express.static(staticPath));
 
-app.get('/api',(req,res)=>{
+app.get('/api/timestamp',(req,res)=>{
     let date=new Date();
     console.log("Before date ",date);
     date.setMinutes(date.getMinutes()-3);
@@ -15,11 +15,11 @@ app.get('/api',(req,res)=>{
     }
     )
 })
-app.get("/api/:date",(req,res)=>{
+app.get("/api/timestamp/:date_string",(req,res)=>{
     let inputDate='';
-    inputDate=new Date(req.params.date);
+    inputDate=new Date(req.params.date_string);
     if(inputDate.toString() == "Invalid Date"){
-        inputDate = new Date(parseInt(req.params.date));
+        inputDate = new Date(parseInt(req.params.date_string));
       }
       if(inputDate.toString() == "Invalid Date"){
         res.json({ error : "Invalid Date" });
